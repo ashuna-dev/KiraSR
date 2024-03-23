@@ -3,6 +3,18 @@ from keras.models import Model
 from keras.layers import LeakyReLU, PReLU, add
 
 def res_block_gen(model, kernel_size, filters, strides):
+    """
+    Generates a residual block for a given model.
+
+    Args:
+        model (tensorflow.keras.Model): The input model.
+        kernel_size (int): The size of the convolutional kernel.
+        filters (int): The number of filters in the convolutional layers.
+        strides (int): The stride size for the convolutional layers.
+
+    Returns:
+        tensorflow.keras.Model: The model with the residual block added.
+    """
     gen = model
     model = Conv2D(filters=filters, kernel_size=kernel_size, strides=strides, padding="same")(model)
     model = BatchNormalization(momentum=0.5)(model)
@@ -13,6 +25,7 @@ def res_block_gen(model, kernel_size, filters, strides):
     return model
 
 def up_sampling_block(model, kernel_size, filters, strides):
+    
     model = Conv2D(filters=filters, kernel_size=kernel_size, strides=strides, padding="same")(model)
     model = UpSampling2D(size=2)(model)
     model = LeakyReLU(alpha=0.2)(model)
@@ -51,10 +64,26 @@ class Generator(object):
         return generator_model
 
 class Discriminator(object):
+    """
+    A class representing the discriminator network.
+
+    Parameters:
+    image_shape (tuple): The shape of the input image.
+
+    Returns:
+    keras.Model: The compiled discriminator model.
+    """
+
     def __init__(self, image_shape):
         self.image_shape = image_shape
 
     def discriminator(self):
+        """
+        Creates the discriminator model.
+
+        Returns:
+        keras.Model: The compiled discriminator model.
+        """
         dis_input = Input(shape=self.image_shape)
         model = Conv2D(filters=64, kernel_size=3, strides=1, padding="same")(dis_input)
         model = LeakyReLU(alpha=0.2)(model)
