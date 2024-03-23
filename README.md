@@ -43,7 +43,7 @@ KiraSR: Unveiling Photorealistic Super-Resolution with Generative Adversarial Ne
 
     * Used COCO data set 2017. It is around 18GB having images of different dimensions.
     * After above step you have High Resolution images. Now you have to get Low Resolution images which you can get by down 
-      scaling High Res  images. I used down scale = 4. So Low resolution image of size 96 we will get. Sample code for this.
+      scaling High Res  images. I used down scale = 4. So Low resolution image of size 96 we will get.
       
       
 ## Usage:
@@ -55,11 +55,11 @@ KiraSR: Unveiling Photorealistic Super-Resolution with Generative Adversarial Ne
             1. Test Model- Here you can test the model by providing High Res images. It will process to get resulting LR images and then will generate SR images.
                And then will save output file comprising of all Low Res, Super Res and High Res images.
                Run following command to test model:
-               > python test.py --input_high_res='./data_hr/' --output_dir='./output/' --model_dir='./model/gen_model3000.h5' --number_of_images=25 --test_type='test_model'
+               > python test.py -ihr='./data_hr/' -o='./output/' -m='./model/gen_model3000.h5' -n-1 -t='test_model'
                
                
             2. Test Low Res images- This option directly take Low Res images and give resulting High Res images.
-               > python test.py --input_low_res='./data_lr/' --output_dir='./output/' --model_dir='./model/gen_model3000.h5' --number_of_images=25 --test_type='test_lr_images'
+               > python test.py -ilr='./data_lr/' -o='./output/' -m='./model/gen_model3000.h5' -n=1 -t='test_lr_images'
                For more help run:
 
             3. For more info
