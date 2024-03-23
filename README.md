@@ -46,24 +46,20 @@ KiraSR: Unveiling Photorealistic Super-Resolution with Generative Adversarial Ne
       scaling High Res  images. I used down scale = 4. So Low resolution image of size 96 we will get.
       
       
-## Usage:
-        
-     * Training:
-       already done and weights are provided
-        
-     * Testing:
-            1. Test Model- Here you can test the model by providing High Res images. It will process to get resulting LR images and then will generate SR images.
-               And then will save output file comprising of all Low Res, Super Res and High Res images.
-               Run following command to test model:
-               > python test.py -ihr='./data_hr/' -o='./output/' -m='./model/gen_model3000.h5' -n-1 -t='test_model'
-               
-               
-            2. Test Low Res images- This option directly take Low Res images and give resulting High Res images.
-               > python test.py -ilr='./data_lr/' -o='./output/' -m='./model/gen_model3000.h5' -n=1 -t='test_lr_images'
-               For more help run:
-
-            3. For more info
-               python test.py -h
+ ### Testing
+1. **Test Model**: Evaluate the model by providing high-resolution images. The script will process these images to obtain resulting LR images and then generate SR images. The     output file comprises all LR, SR, and HR images.
+        ```
+        python test.py -ihr='./data_hr/' -o='./output/' -m='./model/gen_model3000.h5' -n-1 -t='test_model'
+        ```
+ 
+2. **Test Low Res Images**: This option takes low-resolution images directly and generates resulting high-resolution images.
+        ```
+        python test.py -ilr='./data_lr/' -o='./output/' -m='./model/gen_model3000.h5' -n=1 -t='test_lr_images'
+        ```
+ 
+ 3. For more information:
+           ```
+        python test.py -h
           
                
 ## Learning Outcome:
