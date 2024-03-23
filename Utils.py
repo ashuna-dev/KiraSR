@@ -1,4 +1,4 @@
-
+'''This file contains all the utility functions required for the project'''
 
 from keras.layers import Lambda
 import tensorflow as tf
@@ -13,7 +13,7 @@ import sys
 import matplotlib.pyplot as plt
 plt.switch_backend('agg')
 
-# Subpixel Conv will upsample from (h, w, c) to (h/r, w/r, c/r^2)
+'''Subpixel Conv will upsample from (h, w, c) to (h/r, w/r, c/r^2)'''
 def SubpixelConv2D(input_shape, scale=4):
     def subpixel_shape(input_shape):
         dims = [input_shape[0],input_shape[1] * scale,input_shape[2] * scale,int(input_shape[3] / (scale ** 2))]
@@ -25,12 +25,12 @@ def SubpixelConv2D(input_shape, scale=4):
         
     return Lambda(subpixel, output_shape=subpixel_shape)
     
-# Takes list of images and provide HR images in form of numpy array
+'''Takes list of images and provide HR images in form of numpy array'''
 def hr_images(images):
     images_hr = array(images)
     return images_hr
 
-# Takes list of images and provide LR images in form of numpy array
+'''Takes list of images and provide LR images in form of numpy array'''
 def lr_images(images_real , downscale):
     
     images = []
@@ -77,21 +77,36 @@ def load_data(directory, ext):
     files = load_data_from_dirs(load_path(directory), ext)
     return files
     
-def load_training_data(directory, ext, number_of_images = 1000, train_test_ratio = 0.8):
+def load_training_data(directory, ext, number_of_images=1000, train_test_ratio=0.8):
+    """
+    Load training data from a directory.
 
+    Args:
+        directory (str): The directory path where the image files are located.
+        ext (str): The file extension of the image files to be loaded.
+        number_of_images (int, optional): The total number of images to load. Defaults to 1000.
+        train_test_ratio (float, optional): The ratio of training images to total images. Defaults to 0.8.
+
+    Returns:
+        tuple: A tuple containing the following arrays:
+            - x_train_lr (numpy.ndarray): Low-resolution training images.
+            - x_train_hr (numpy.ndarray): High-resolution training images.
+            - x_test_lr (numpy.ndarray): Low-resolution test images.
+            - x_test_hr (numpy.ndarray): High-resolution test images.
+    """
     number_of_train_images = int(number_of_images * train_test_ratio)
     
     files = load_data_from_dirs(load_path(directory), ext)
     
     if len(files) < number_of_images:
-        print("Number of image files are less then you specified")
-        print("Please reduce number of images to %d" % len(files))
+        print("Number of image files are less than you specified")
+        print("Please reduce the number of images to %d" % len(files))
         sys.exit()
         
     test_array = array(files)
     if len(test_array.shape) < 3:
-        print("Images are of not same shape")
-        print("Please provide same shape images")
+        print("Images are not of the same shape")
+        print("Please provide images of the same shape")
         sys.exit()
     
     x_train = files[:number_of_train_images]
@@ -143,8 +158,8 @@ def load_test_data(directory, ext, number_of_images = 100):
     
     return x_test_lr
     
-# While training save generated image(in form LR, SR, HR)
-# Save only one image as sample  
+'''While training save generated image(in form LR, SR, HR)'''
+'''Save only one image as sample''' 
 def plot_generated_images(output_dir, epoch, generator, x_test_hr, x_test_lr , dim=(1, 3), figsize=(15, 5)):
     
     examples = x_test_hr.shape[0]
@@ -173,10 +188,7 @@ def plot_generated_images(output_dir, epoch, generator, x_test_hr, x_test_lr , d
     plt.tight_layout()
     plt.savefig(output_dir + 'generated_image_%d.png' % epoch)
     
-    #plt.show()
-    
-# Plots and save generated images(in form LR, SR, HR) from model to test the model 
-# Save output for all images given for testing  
+'''While testing save generated image(in form LR, SR, HR)'''
 def plot_test_generated_images_for_model(output_dir, generator, x_test_hr, x_test_lr , dim=(1, 3), figsize=(15, 5)):
     
     examples = x_test_hr.shape[0]
@@ -205,9 +217,7 @@ def plot_test_generated_images_for_model(output_dir, generator, x_test_hr, x_tes
         plt.tight_layout()
         plt.savefig(output_dir + 'test_generated_image_%d.png' % index)
     
-        #plt.show()
-
-# Takes LR images and save respective HR images
+'''LR images are given as input to model to generate HR images'''
 def plot_test_generated_images(output_dir, generator, x_test_lr, figsize=(5, 5)):
     
     examples = x_test_lr.shape[0]
@@ -217,7 +227,7 @@ def plot_test_generated_images(output_dir, generator, x_test_lr, figsize=(5, 5))
     
     for index in range(examples):
     
-        #plt.figure(figsize=figsize)
+        '''plt.figure(figsize=figsize)'''
     
         plt.imshow(generated_image[index], interpolation='nearest')
         plt.axis('off')
@@ -225,7 +235,6 @@ def plot_test_generated_images(output_dir, generator, x_test_lr, figsize=(5, 5))
         plt.tight_layout()
         plt.savefig(output_dir + 'high_res_result_image_%d.png' % index)
     
-        #plt.show()
 
 
 
