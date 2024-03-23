@@ -57,11 +57,11 @@ KiraSR: Unveiling Photorealistic Super-Resolution with Generative Adversarial Ne
         python test.py -ilr='./data_lr/' -o='./output/' -m='./model/gen_model3000.h5' -n=1 -t='test_lr_images'
         ```
  
- 3. For more information:
+3. For more information:
            ```
         python test.py -h
           
-               
+           ``` 
 ## Learning Outcome:
 
     *  GAN training can be challenging, especially with deep networks, but incorporating residual blocks alleviates some of these difficulties.
