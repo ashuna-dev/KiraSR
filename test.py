@@ -3,16 +3,15 @@ import os
 import numpy as np
 from keras.models import load_model
 import cv2
-from skimage import data, io, filters
+from skimage import io
 from skimage.transform import resize
 import Utils
 import Utils_model
 from Utils_model import VGG_LOSS
 
-''' This file is used to test the model output for the given input images.'''
-
 import matplotlib.pyplot as plt
 
+''' This file is used to test the model output for the given input images.'''
 
 image_shape = (96, 96, 3)
 
