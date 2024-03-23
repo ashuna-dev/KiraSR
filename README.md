@@ -32,8 +32,8 @@ KiraSR: Unveiling Photorealistic Super-Resolution with Generative Adversarial Ne
 ## Requirements:
 
     You will need the following to run the above:
-    Python 3.11.2
-    tensorflow 2.16.0
+    Python 3.5.8 
+    tensorflow 1.16.0
     keras 2.2.4
     numpy 1.10.4
     matplotlib, skimage, opencv-python
@@ -64,6 +64,8 @@ KiraSR: Unveiling Photorealistic Super-Resolution with Generative Adversarial Ne
 
             3. For more info
                python test.py -h
+
+    PS:- ./data/ folder can be made in the root directory for use
 ## Learning Outcome:
 
     *  GAN training can be challenging, especially with deep networks, but incorporating residual blocks alleviates some of these difficulties.
