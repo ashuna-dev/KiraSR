@@ -76,7 +76,5 @@ KiraSR: Unveiling Photorealistic Super-Resolution with Generative Adversarial Ne
 ## Output:
 
 Below are few results-
-![input 1](./output/input1.jpeg)
-![output 1](./output/output1.jpeg)
-![input 2](./output/input2.jpeg)
-![output 2](./output/output2.jpeg)
+![input 1](./output/input1.jpeg) ![output 1](./output/output1.jpg)
+![input 2](./output/input2.jpeg) ![output 2](./output/output2.jpg)
