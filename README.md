@@ -7,7 +7,7 @@ KiraSR: Unveiling Photorealistic Super-Resolution with Generative Adversarial Ne
 
 ## Generator and Discriminator Network:
     
-![Network](./Architecture_images/network.jpg)
+![Network](./network.jpg)
     
 ## Neural Network:
     * Implemented a network architecture consisting of 16 Residual blocks to enhance the learning capabilities of the GAN.
