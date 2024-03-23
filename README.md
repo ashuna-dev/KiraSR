@@ -1,6 +1,5 @@
 # KiraSR
-research paper Implementation 
-Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network implemented in Keras
+KiraSR: Unveiling Photorealistic Super-Resolution with Generative Adversarial Networks
 
 
 ##  Statement:
@@ -11,8 +10,8 @@ Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Net
 ![Network](./Architecture_images/network.jpg)
     
 ## Neural Network:
-     * Implemented a network architecture consisting of 16 Residual blocks to enhance the learning capabilities of the GAN.
-     * Utilized PixelShuffler x2, integrating two sub-pixel CNNs within the Generator for efficient feature map upscaling.
+    * Implemented a network architecture consisting of 16 Residual blocks to enhance the learning capabilities of the GAN.
+    * Utilized PixelShuffler x2, integrating two sub-pixel CNNs within the Generator for efficient feature map upscaling.
     * Adopted the Parameterized Rectified Linear Unit (PReLU) activation function, enhancing the model's ability to learn adaptive coefficients for negative inputs.
     * Employed convolutional layers with specifications like k3n64s1, indicating a kernel size of 3, 64 channels, and strides of 1, optimizing feature extraction.
     * Incorporated a Perceptual loss function comprising Content (Reconstruction) loss and Adversarial loss to guide the training process effectively.
@@ -64,8 +63,7 @@ Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Net
                For more help run:
 
             3. For more info
-
-              python test.py -h
+               python test.py -h
           
                
 ## Learning Outcome:
